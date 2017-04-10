@@ -15,7 +15,7 @@ fills parent[] to store the parth
 bool bfs(int Graph[V][V], int s, int t, int parent[]) {
 	bool visited[V];
 	for(int i = 0; i < V; i++) {
-		visited[] = false;
+		visited[i] = false;
 	}
 
 	//enqueue source vertex and mark source vertex as visited
@@ -39,7 +39,7 @@ bool bfs(int Graph[V][V], int s, int t, int parent[]) {
 	}
 
 	//return true if we hit the sink after doing bfs from source
-	return(viisted[t]);
+	return(visted[t]);
 }
 
 //return max flow from source to sink in the given graph
@@ -66,16 +66,16 @@ int forkFulkerson(int graph[V][V], int source, int sink) {
 		int pathFlow = INT_MAX;
 		for(v = sink; v != source; v = parent[v]) {
 			u = parent[v];
-			path_flow = min(path_flow, residualG[u][v]);
+			pathFlow = min(pathFlow, residualG[u][v]);
 		}
 		//update residual capacities of the edges and reverse edges along the path
 		for(v = sink; v != source; v = parent[v]) {
 			u = parent[v];
-			residualG[u][v] -= path_flow;
-			residualG[v][u] += path_flow;
+			residualG[u][v] -= pathFlow;
+			residualG[v][u] += pathFlow;
 		} 
 		//add path flow to overflow
-		maxFlow += path_flow;
+		maxFlow += pathFlow;
 	}
 
 	return maxFlow;
